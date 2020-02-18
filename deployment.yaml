@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-gin
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello-gin
+    spec:
+      containers:
+        - name: hello-gin
+          image: gcr.io/k8s0529/hello-gin:latest
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: hello-gin
